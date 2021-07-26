@@ -6,9 +6,7 @@ let div=document.createElement("div");
 div.className="pagination";
 card.append(div);
 
-
-
-
+//creat table
 function creattable(users){
     let divs=document.createElement("div");
     divs.className="user-list"
