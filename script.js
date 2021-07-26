@@ -19,7 +19,6 @@ function creattable(users){
     div.append(table);
     document.body.append(div);
         users.forEach(e => {
-         console.log(e);
           let row=document.createElement("tr");
           row.innerHTML=`<tr><td>${e.id}</td><td>${e.name}</td><td>${e.email}</td></tr> ` ;
           table.append(row);
@@ -74,7 +73,6 @@ async function getdata(){
       page.innerText = i;
       // page
       page.onclick = function () {
-        console.log("clicked...", i,users);
         localStorage.setItem("key",i);
         pagechange(i,users);
       };
@@ -89,14 +87,12 @@ async function getdata(){
     forw.className="for";
     forw.onclick=function (){
     let i=localStorage.getItem("key");
-    console.log(i);
     let LastPage=localStorage.getItem("LastPage");
     if(i!==LastPage)
     {
       i=parseInt(i)+1;
     }
     localStorage.setItem("key",i);
-    console.log(i,users);
     pagechange(i,users);
     }
     pagination.append(forw);
@@ -116,7 +112,7 @@ async function getdata(){
     creattable(firstTenUsers);
   }
   catch(err){
-   console.log("network issue");
+   alert("CHECK YOUR NETWORK CONNECTION")
   }
 }
 
