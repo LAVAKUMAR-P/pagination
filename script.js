@@ -1,12 +1,14 @@
+//div for collect all elements in single card...................................................................................
 const card=document.createElement("div");
   card.className="card";
   document.body.append(card);
 
+//pagination div...................................................................................................................
 let div=document.createElement("div");
 div.className="pagination";
 card.append(div);
 
-//creat table
+//creat table in UI.................................................................................................................
 function creattable(users){
     let divs=document.createElement("div");
     divs.className="user-list"
@@ -30,12 +32,15 @@ function creattable(users){
         });
       
     }
+
+//to cut data per page (pagination).............................................................................................
     let pagechange=(i,users)=>{
       const pageUsers=users.slice((i - 1) * 10, i * 10);
       document.querySelector(".user-list").remove();
       creattable(pageUsers);
     }
 
+//to take data from api & creating buttons...................................................................................................................
 async function getdata(){
     const data = await fetch("https://raw.githubusercontent.com/Rajavasanthan/jsondata/master/pagenation.json");
     const users = await data.json();
@@ -46,7 +51,7 @@ async function getdata(){
     localStorage.setItem("LastPage",noOfPages);
     localStorage.setItem("key",1);
     
-    //home button.....................................................................................
+    //home button...............................................................................................................................................
     let home=document.createElement('button');
     home.innerText="HOME";
     home.className="pre";
@@ -57,7 +62,7 @@ async function getdata(){
     }
     pagination.append(home);
 
-    //previous page button.............................................................................. 
+    //previous page button....................................................................................................................................... 
     let pre=document.createElement('button');
     pre.innerText="<";
     pre.className="pre";
@@ -120,5 +125,5 @@ async function getdata(){
    alert("check your network");
   }
 }
-
+//calling function to get data from api
 getdata();
